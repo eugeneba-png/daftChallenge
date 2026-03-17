@@ -97,9 +97,6 @@ Your task is to recreate these three historical DAGs using DAFT, making them vis
 ![](https://raw.githubusercontent.com/flyaflya/persuasive/642288ea5f79050c05801c3d127084ac0f361a01/images/scurvy2.png)
 
 ```{python}
-#| label: dag-1-1747
-#| echo: true
-
 import daft
 import matplotlib.pyplot as plt
 
@@ -108,42 +105,43 @@ pgm = daft.PGM(dpi=150, aspect=2.0, observed_style="inner", alternate_style="out
 
 # Add professionally styled nodes
 pgm.add_node(
-    "lemons",
-    "Lemon\nRations",
-    0.7,
-    0.5,
+    "Lemons",
+    "Lemon\n"+r"$X$",
+    1,
+    1,
     aspect=3,
     scale=1.1,
     plot_params={
         "facecolor": "lightgoldenrodyellow",
         "edgecolor": "goldenrod",
         "linewidth": 2,
-        "alpha": 0.9,
+        "alpha": 0.8,
     },
 )
 
 pgm.add_node(
-    "scurvy_prev",
-    "Scurvy\nPrevention",
-    2.3,
-    0.5,
+    "Scurvy",
+    "Scurvy\n"+r" $(Y)$",
+    3.25,
+    1,
     aspect=3,
     scale=1.1,
     plot_params={
         "facecolor": "honeydew",
         "edgecolor": "seagreen",
         "linewidth": 2,
-        "alpha": 0.9,
+        "alpha": 0.8,
     },
 )
 
 # Add the causal arrow representing the 1747 understanding
-pgm.add_edge("lemons", "scurvy_prev")
+pgm.add_edge("Lemons", "Scurvy")
 
 # Render the DAG
 fig = pgm.render()
-plt.title("1747 Understanding: Lemons Prevent Scurvy", fontsize=10)
+plt.title("Simplified Lind's Model (1747)", fontsize=10)
 plt.tight_layout()
+
 ```
 
 ### DAG 2: The Misguided Belief (Wrong Understanding)
@@ -163,58 +161,40 @@ import daft
 import matplotlib.pyplot as plt
 
 # Misguided (incorrect) causal story: Acid kills bacteria, which prevents scurvy
-pgm = daft.PGM(dpi=150, aspect=2.8, observed_style="inner", alternate_style="outer")
+pgm = daft.PGM(dpi=150, aspect=3.0, observed_style="inner", alternate_style="outer")
 
 pgm.add_node(
     "acid",
-    "Acid\n(Intake)",
-    0.7,
-    0.5,
-    aspect=3,
-    scale=1.1,
-    plot_params={
-        "facecolor": "mistyrose",
-        "edgecolor": "firebrick",
-        "linewidth": 2,
-        "alpha": 0.9,
-    },
+    "Acid",
+    1.0,
+    1.5,
+    aspect=3.0,
+    scale=1.0,
 )
 
 pgm.add_node(
     "bacteria_death",
-    "Bacteria\nDeath",
-    2.1,
-    0.5,
-    aspect=3,
-    scale=1.1,
-    plot_params={
-        "facecolor": "lavenderblush",
-        "edgecolor": "crimson",
-        "linewidth": 2,
-        "alpha": 0.9,
-    },
+    "Bacteria in Food",
+    2.5,
+    1.0,
+    aspect=3.0,
+    scale=1.0,
 )
 
 pgm.add_node(
     "scurvy_prev_wrong",
-    "Scurvy\nPrevention",
-    3.6,
+    "Scurvy",
+    3.7,
     0.5,
-    aspect=3,
-    scale=1.1,
-    plot_params={
-        "facecolor": "seashell",
-        "edgecolor": "darkred",
-        "linewidth": 2,
-        "alpha": 0.9,
-    },
+    aspect=3.0,
+    scale=1.0,
 )
 
 pgm.add_edge("acid", "bacteria_death")
 pgm.add_edge("bacteria_death", "scurvy_prev_wrong")
 
 pgm.render()
-plt.title("Misguided Belief (Wrong): Acid → Bacteria Death → Scurvy Prevention", fontsize=10)
+plt.title("Updated Bacterial Theory (Late 19th Century)", fontsize=10)
 plt.tight_layout()
 ```
 
@@ -234,59 +214,17 @@ plt.tight_layout()
 import daft
 import matplotlib.pyplot as plt
 
-# 1928: Mechanistic understanding – Vitamin C supports collagen synthesis; loss of collagen leads to scurvy
-pgm = daft.PGM(dpi=150, aspect=2.8, observed_style="inner", alternate_style="outer")
+pgm = daft.PGM(dpi=150, aspect=3.0, alternate_style="outer")
 
-pgm.add_node(
-    "vitc",
-    "Vitamin C",
-    0.7,
-    0.5,
-    aspect=3,
-    scale=1.1,
-    plot_params={
-        "facecolor": "lightgreen",
-        "edgecolor": "darkgreen",
-        "linewidth": 2,
-        "alpha": 0.9,
-    },
-)
-
-pgm.add_node(
-    "collagen",
-    "Collagen\nSynthesis",
-    2.1,
-    0.5,
-    aspect=3,
-    scale=1.1,
-    plot_params={
-        "facecolor": "aliceblue",
-        "edgecolor": "royalblue",
-        "linewidth": 2,
-        "alpha": 0.9,
-    },
-)
-
-pgm.add_node(
-    "scurvy",
-    "Scurvy",
-    3.6,
-    0.5,
-    aspect=3,
-    scale=1.1,
-    plot_params={
-        "facecolor": "lavender",
-        "edgecolor": "purple",
-        "linewidth": 2,
-        "alpha": 0.9,
-    },
-)
+pgm.add_node("vitc", "Vitamin C", 0.7, 0.5, aspect=3.0, scale=1.0)
+pgm.add_node("collagen", "Collagen\nSynthesis", 2.0, 0.5, aspect=3.0, scale=1.0)
+pgm.add_node("scurvy", "Scurvy", 3.3, 0.5, aspect=3.0, scale=1.0)
 
 pgm.add_edge("vitc", "collagen")
 pgm.add_edge("collagen", "scurvy")
 
 pgm.render()
-plt.title("1928 Understanding: Vitamin C → Collagen Synthesis → Scurvy", fontsize=10)
+plt.title("Simplified Modern Understanding (1930s onwards)", fontsize=10)
 plt.tight_layout()
 ```
 
@@ -315,39 +253,30 @@ plt.tight_layout()
 - Demonstrate understanding of DAFT customization options
 - Be suitable for a business or academic audience
 
-### Example: Professional DAFT Node Styling
+### Example: Simplified Modern Understanding DAG
 
-Here's an example (see @fig-example-node) of how to create a professionally styled node in DAFT with nice captions and references to the figure:
+Here's an example (see @fig-example-node) that matches the simplified Vitamin C → Collagen Synthesis → Scurvy diagram:
 
 ```{python}
 #| label: fig-example-node
 #| echo: true
-#| fig-cap: "Example: Professional DAFT Node Styling"
+#| fig-cap: "Simplified Modern Understanding (1930s onwards)"
 
 import daft
 import matplotlib.pyplot as plt
 
-# Create a PGM object
-pgm = daft.PGM(dpi=150, alternate_style="outer")
+pgm = daft.PGM(dpi=150, aspect=3.0, alternate_style="outer")
 
-# Example of a professionally styled node
-pgm.add_node("vitamin_c", "Vitamin C\nIntake" + r" $(X)$", 1, 1, aspect = 3, scale = 1.1,
-             plot_params={
-                 'facecolor': 'lightgreen', 
-                 'edgecolor': 'darkgreen', 
-                 'linewidth': 2,
-                 'alpha': 0.8,
-             })
-pgm.add_node("health", "Healthiness\n"+r" $(Y)$", 3.25, 1, aspect = 3, scale = 1.1,
-             plot_params={
-                 'facecolor': 'thistle', 
-                 'edgecolor': 'purple', 
-                 'linewidth': 2,
-                 'alpha': 0.8,
-             })
-pgm.add_edge("vitamin_c", "health")
+pgm.add_node("vitc", "Vitamin C", 0.7, 0.5, aspect=3.0, scale=1.0)
+pgm.add_node("collagen", "Collagen\nSynthesis", 2.0, 0.5, aspect=3.0, scale=1.0)
+pgm.add_node("scurvy", "Scurvy", 3.3, 0.5, aspect=3.0, scale=1.0)
+
+pgm.add_edge("vitc", "collagen")
+pgm.add_edge("collagen", "scurvy")
 
 pgm.render()
+plt.title("Simplified Modern Understanding (1930s onwards)", fontsize=10)
+plt.tight_layout()
 ```
 
 **Key Styling Parameters:**
