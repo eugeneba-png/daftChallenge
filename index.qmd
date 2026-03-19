@@ -101,7 +101,7 @@ import daft
 import matplotlib.pyplot as plt
 
 # Minimal black-and-white styling to match the reference image
-pgm = daft.PGM(dpi=150, aspect=2.0, line_width=1.0)
+pgm = daft.PGM(dpi=150, aspect=2.0, line_width=1.0, grid_unit=1.1, node_unit=0.85)
 
 node_style = {
     "facecolor": "white",
@@ -110,8 +110,8 @@ node_style = {
 }
 
 # Node positions chosen to reproduce the spacing in the reference
-pgm.add_node("Lemons", "Lemons", 1.0, 1.0, aspect=2.4, scale=1.0, fontsize=8, plot_params=node_style)
-pgm.add_node("Scurvy", "Scurvy", 3.0, 1.0, aspect=2.4, scale=1.0, fontsize=8, plot_params=node_style)
+pgm.add_node("Lemons", "Lemons", 1.0, 1.0, aspect=2.4, scale=1.0, fontsize=7, plot_params=node_style)
+pgm.add_node("Scurvy", "Scurvy", 3.0, 1.0, aspect=2.4, scale=1.0, fontsize=7, plot_params=node_style)
 
 pgm.add_edge("Lemons", "Scurvy", plot_params={"linewidth": 1.0, "color": "black"})
 
