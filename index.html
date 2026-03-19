@@ -204,36 +204,36 @@ Ready to create beautiful DAGs!</code></pre>
 <p><strong>Historical Context:</strong> In 1747, James Lind discovered that lemons prevent scurvy through a controlled experiment. However, the understanding was incomplete - they knew lemons worked but not why.</p>
 <p><strong>Your Task:</strong> Recreate this DAG showing the relationship between lemons and scurvy prevention.</p>
 <p><strong>Reference Image:</strong> <img src="https://raw.githubusercontent.com/flyaflya/persuasive/642288ea5f79050c05801c3d127084ac0f361a01/images/scurvy2.png" class="img-fluid"></p>
-<div id="e60d110f" class="cell" data-execution_count="2">
+<div id="665541dc" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> daft</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Minimal black-and-white styling to match the reference image</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>pgm <span class="op">=</span> daft.PGM(dpi<span class="op">=</span><span class="dv">150</span>, aspect<span class="op">=</span><span class="fl">2.6</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>pgm <span class="op">=</span> daft.PGM(dpi<span class="op">=</span><span class="dv">150</span>, aspect<span class="op">=</span><span class="fl">2.0</span>, line_width<span class="op">=</span><span class="fl">1.0</span>)</span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>node_style <span class="op">=</span> {</span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"facecolor"</span>: <span class="st">"white"</span>,</span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"edgecolor"</span>: <span class="st">"black"</span>,</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"linewidth"</span>: <span class="fl">1.2</span>,</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"linewidth"</span>: <span class="fl">1.0</span>,</span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Node positions chosen to reproduce the spacing in the reference</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>pgm.add_node(<span class="st">"Lemons"</span>, <span class="st">"Lemons"</span>, <span class="fl">1.0</span>, <span class="fl">1.0</span>, aspect<span class="op">=</span><span class="fl">2.6</span>, scale<span class="op">=</span><span class="fl">1.0</span>, fontsize<span class="op">=</span><span class="dv">10</span>, plot_params<span class="op">=</span>node_style)</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>pgm.add_node(<span class="st">"Scurvy"</span>, <span class="st">"Scurvy"</span>, <span class="fl">3.1</span>, <span class="fl">1.0</span>, aspect<span class="op">=</span><span class="fl">2.6</span>, scale<span class="op">=</span><span class="fl">1.0</span>, fontsize<span class="op">=</span><span class="dv">10</span>, plot_params<span class="op">=</span>node_style)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>pgm.add_node(<span class="st">"Lemons"</span>, <span class="st">"Lemons"</span>, <span class="fl">1.0</span>, <span class="fl">1.0</span>, aspect<span class="op">=</span><span class="fl">2.4</span>, scale<span class="op">=</span><span class="fl">1.0</span>, fontsize<span class="op">=</span><span class="dv">8</span>, plot_params<span class="op">=</span>node_style)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>pgm.add_node(<span class="st">"Scurvy"</span>, <span class="st">"Scurvy"</span>, <span class="fl">3.0</span>, <span class="fl">1.0</span>, aspect<span class="op">=</span><span class="fl">2.4</span>, scale<span class="op">=</span><span class="fl">1.0</span>, fontsize<span class="op">=</span><span class="dv">8</span>, plot_params<span class="op">=</span>node_style)</span>
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>pgm.add_edge(<span class="st">"Lemons"</span>, <span class="st">"Scurvy"</span>, plot_params<span class="op">=</span>{<span class="st">"linewidth"</span>: <span class="fl">1.2</span>, <span class="st">"color"</span>: <span class="st">"black"</span>})</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>pgm.add_edge(<span class="st">"Lemons"</span>, <span class="st">"Scurvy"</span>, plot_params<span class="op">=</span>{<span class="st">"linewidth"</span>: <span class="fl">1.0</span>, <span class="st">"color"</span>: <span class="st">"black"</span>})</span>
 <span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> pgm.render()</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Simplified Lind's Model (1747)"</span>, loc<span class="op">=</span><span class="st">"left"</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>plt.tight_layout(pad<span class="op">=</span><span class="fl">0.2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Simplified Lind's Model (1747)"</span>, loc<span class="op">=</span><span class="st">"left"</span>, fontsize<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>plt.tight_layout(pad<span class="op">=</span><span class="fl">0.1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/9q/bp_9w0gj1h9cbhl6hpfpgh5r0000gn/T/ipykernel_11617/3376936419.py:21: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
-  plt.tight_layout(pad=0.2)</code></pre>
+<pre><code>/var/folders/9q/bp_9w0gj1h9cbhl6hpfpgh5r0000gn/T/ipykernel_11985/1233557707.py:21: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+  plt.tight_layout(pad=0.1)</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/cell-3-output-2.png" width="455" height="144" class="figure-img"></p>
+<p><img src="index_files/figure-html/cell-3-output-2.png" width="431" height="141" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -285,7 +285,7 @@ Ready to create beautiful DAGs!</code></pre>
 <span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Updated Bacterial Theory (Late 19th Century)"</span>, fontsize<span class="op">=</span><span class="dv">10</span>)</span>
 <span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/9q/bp_9w0gj1h9cbhl6hpfpgh5r0000gn/T/ipykernel_11617/68004821.py:39: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+<pre><code>/var/folders/9q/bp_9w0gj1h9cbhl6hpfpgh5r0000gn/T/ipykernel_11985/68004821.py:39: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
   plt.tight_layout()</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -341,7 +341,7 @@ Ready to create beautiful DAGs!</code></pre>
 <span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Simplified Modern Understanding (1930s onwards)"</span>, fontsize<span class="op">=</span><span class="dv">10</span>)</span>
 <span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/9q/bp_9w0gj1h9cbhl6hpfpgh5r0000gn/T/ipykernel_11617/2623652886.py:37: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+<pre><code>/var/folders/9q/bp_9w0gj1h9cbhl6hpfpgh5r0000gn/T/ipykernel_11985/2623652886.py:37: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
   plt.tight_layout()</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -391,7 +391,7 @@ Ready to create beautiful DAGs!</code></pre>
 <section id="example-simplified-modern-understanding-dag" class="level3">
 <h3 class="anchored" data-anchor-id="example-simplified-modern-understanding-dag">Example: Simplified Modern Understanding DAG</h3>
 <p>Here’s an example (see <strong>?@fig-example-node</strong>) that matches the simplified Vitamin C → Collagen Synthesis → Scurvy diagram:</p>
-<div id="09b4f7f4" class="cell" data-execution_count="5">
+<div id="ea9dc6f7" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> daft</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
