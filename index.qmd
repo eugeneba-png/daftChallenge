@@ -161,33 +161,33 @@ import daft
 import matplotlib.pyplot as plt
 
 # Misguided (incorrect) causal story: Acid kills bacteria, which prevents scurvy
-pgm = daft.PGM(dpi=150, aspect=3.0, observed_style="inner", alternate_style="outer")
+pgm = daft.PGM(dpi=150, aspect=2.0, observed_style="inner", alternate_style="outer")
 
 pgm.add_node(
     "acid",
     "Acid",
-    1.0,
-    1.5,
-    aspect=3.0,
-    scale=1.0,
+    0.8,
+    1.7,
+    aspect=2.3,
+    scale=0.95,
 )
 
 pgm.add_node(
     "bacteria_death",
     "Bacteria in Food",
-    2.5,
-    1.0,
-    aspect=3.0,
-    scale=1.0,
+    1.8,
+    1.1,
+    aspect=2.3,
+    scale=0.95,
 )
 
 pgm.add_node(
     "scurvy_prev_wrong",
     "Scurvy",
-    3.7,
+    2.8,
     0.5,
-    aspect=3.0,
-    scale=1.0,
+    aspect=2.3,
+    scale=0.95,
 )
 
 pgm.add_edge("acid", "bacteria_death")
@@ -214,38 +214,32 @@ plt.tight_layout()
 import daft
 import matplotlib.pyplot as plt
 
-# Use DAFT's default "inner" node styling (circles), and keep node aspect at 1.0.
-# Tweaking y-coordinates gives the diagonal layout seen in the reference.
-pgm = daft.PGM(dpi=150, aspect=1.0, alternate_style="inner")
+# Match the reference: simple white ellipses on a wider canvas.
+pgm = daft.PGM(dpi=150, aspect=2.0, observed_style="inner", alternate_style="outer")
 
 pgm.add_node(
     "vitc",
     "Vitamin C",
-    0.7,
-    1.1,
-    aspect=1.45,
-    # Bigger circles so the label text fits cleanly (matches the reference).
-    scale=1.35,
-    fontsize=8.5,
+    0.9,
+    1.65,
+    aspect=2.3,
+    scale=1.0,
 )
 pgm.add_node(
     "collagen",
-    # Single-line label fits better in the circle style.
     "Collagen Synthesis",
     2.0,
-    0.5,
-    aspect=1.6,
-    scale=2.0,
-    fontsize=7.5,
+    1.0,
+    aspect=2.7,
+    scale=1.05,
 )
 pgm.add_node(
     "scurvy",
     "Scurvy",
-    3.3,
-    0.2,
-    aspect=1.45,
-    scale=1.4,
-    fontsize=8.5,
+    3.1,
+    0.35,
+    aspect=2.3,
+    scale=1.0,
 )
 
 pgm.add_edge("vitc", "collagen")
