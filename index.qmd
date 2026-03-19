@@ -97,11 +97,15 @@ Your task is to recreate these three historical DAGs using DAFT, making them vis
 ![](https://raw.githubusercontent.com/flyaflya/persuasive/642288ea5f79050c05801c3d127084ac0f361a01/images/scurvy2.png)
 
 ```{python}
+#| label: dag-1-1747
+#| fig-width: 2.8
+#| fig-height: 1.1
+#| dpi: 150
 import daft
 import matplotlib.pyplot as plt
 
 # Minimal black-and-white styling to match the reference image
-pgm = daft.PGM(dpi=150, aspect=2.0, line_width=1.0, grid_unit=1.1, node_unit=0.85)
+pgm = daft.PGM(dpi=150, aspect=2.0, line_width=1.0)
 
 node_style = {
     "facecolor": "white",
@@ -110,13 +114,13 @@ node_style = {
 }
 
 # Node positions chosen to reproduce the spacing in the reference
-pgm.add_node("Lemons", "Lemons", 1.0, 1.0, aspect=2.4, scale=1.0, fontsize=7, plot_params=node_style)
-pgm.add_node("Scurvy", "Scurvy", 3.0, 1.0, aspect=2.4, scale=1.0, fontsize=7, plot_params=node_style)
+pgm.add_node("Lemons", "Lemons", 1.0, 1.0, aspect=2.6, scale=1.0, fontsize=9, plot_params=node_style)
+pgm.add_node("Scurvy", "Scurvy", 3.25, 1.0, aspect=2.6, scale=1.0, fontsize=9, plot_params=node_style)
 
 pgm.add_edge("Lemons", "Scurvy", plot_params={"linewidth": 1.0, "color": "black"})
 
 fig = pgm.render()
-plt.title("Simplified Lind's Model (1747)", loc="left", fontsize=10)
+plt.title("Simplified Lind's Model (1747)", x=0.0, ha="left", fontsize=8)
 plt.tight_layout(pad=0.1)
 
 ```

@@ -50,7 +50,7 @@
         "\n",
         "First, let's install the DAFT package and set up our environment:"
       ],
-      "id": "b4741645"
+      "id": "98ae2bca"
     },
     {
       "cell_type": "code",
@@ -115,17 +115,22 @@
         "**Reference Image:**\n",
         "![](https://raw.githubusercontent.com/flyaflya/persuasive/642288ea5f79050c05801c3d127084ac0f361a01/images/scurvy2.png)"
       ],
-      "id": "8c3b7fa7"
+      "id": "35dd1ba4"
     },
     {
       "cell_type": "code",
-      "metadata": {},
+      "metadata": {
+        "fig-width": 2.8,
+        "fig-height": 1.1,
+        "dpi": 150
+      },
       "source": [
+        "#| label: dag-1-1747\n",
         "import daft\n",
         "import matplotlib.pyplot as plt\n",
         "\n",
         "# Minimal black-and-white styling to match the reference image\n",
-        "pgm = daft.PGM(dpi=150, aspect=2.0, line_width=1.0, grid_unit=1.1, node_unit=0.85)\n",
+        "pgm = daft.PGM(dpi=150, aspect=2.0, line_width=1.0)\n",
         "\n",
         "node_style = {\n",
         "    \"facecolor\": \"white\",\n",
@@ -134,16 +139,16 @@
         "}\n",
         "\n",
         "# Node positions chosen to reproduce the spacing in the reference\n",
-        "pgm.add_node(\"Lemons\", \"Lemons\", 1.0, 1.0, aspect=2.4, scale=1.0, fontsize=7, plot_params=node_style)\n",
-        "pgm.add_node(\"Scurvy\", \"Scurvy\", 3.0, 1.0, aspect=2.4, scale=1.0, fontsize=7, plot_params=node_style)\n",
+        "pgm.add_node(\"Lemons\", \"Lemons\", 1.0, 1.0, aspect=2.6, scale=1.0, fontsize=9, plot_params=node_style)\n",
+        "pgm.add_node(\"Scurvy\", \"Scurvy\", 3.25, 1.0, aspect=2.6, scale=1.0, fontsize=9, plot_params=node_style)\n",
         "\n",
         "pgm.add_edge(\"Lemons\", \"Scurvy\", plot_params={\"linewidth\": 1.0, \"color\": \"black\"})\n",
         "\n",
         "fig = pgm.render()\n",
-        "plt.title(\"Simplified Lind's Model (1747)\", loc=\"left\", fontsize=10)\n",
+        "plt.title(\"Simplified Lind's Model (1747)\", x=0.0, ha=\"left\", fontsize=8)\n",
         "plt.tight_layout(pad=0.1)"
       ],
-      "id": "cc6d139b",
+      "id": "dag-1-1747",
       "execution_count": null,
       "outputs": []
     },
@@ -160,7 +165,7 @@
         "**Reference Image:**\n",
         "![](https://raw.githubusercontent.com/flyaflya/persuasive/8aaffd0a3c967d0a26f506232f998130847be3e8/images/scurvy.png)"
       ],
-      "id": "882f41f9"
+      "id": "889754ae"
     },
     {
       "cell_type": "code",
@@ -226,7 +231,7 @@
         "**Reference Image:**\n",
         "![](https://raw.githubusercontent.com/flyaflya/persuasive/main/images/scurvy3.png)"
       ],
-      "id": "4847b046"
+      "id": "3353bad5"
     },
     {
       "cell_type": "code",
@@ -310,7 +315,7 @@
         "\n",
         "Here's an example (see @fig-example-node) that matches the simplified Vitamin C → Collagen Synthesis → Scurvy diagram:"
       ],
-      "id": "b379e7df"
+      "id": "ed61d927"
     },
     {
       "cell_type": "code",
@@ -341,7 +346,7 @@
         "\n",
         "pgm.render()"
       ],
-      "id": "e03bd989",
+      "id": "b928d19f",
       "execution_count": null,
       "outputs": []
     },
@@ -419,7 +424,7 @@
         "- [ ] All DAG recreations completed with professional quality\n",
         "- [ ] Erase everything but the story of scurvy and the three DAGs (make it a nice concise narrative about scurvy)\n"
       ],
-      "id": "a4f57d85"
+      "id": "4d9503a6"
     }
   ],
   "metadata": {
