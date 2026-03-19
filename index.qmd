@@ -100,47 +100,24 @@ Your task is to recreate these three historical DAGs using DAFT, making them vis
 import daft
 import matplotlib.pyplot as plt
 
-# Create a PGM object with a wide layout to mirror the reference
-pgm = daft.PGM(dpi=150, aspect=2.0, observed_style="inner", alternate_style="outer")
+# Minimal black-and-white styling to match the reference image
+pgm = daft.PGM(dpi=150, aspect=2.6)
 
-# Add professionally styled nodes
-pgm.add_node(
-    "Lemons",
-    "Lemon\n"+r"$X$",
-    1,
-    1,
-    aspect=3,
-    scale=1.1,
-    plot_params={
-        "facecolor": "lightgoldenrodyellow",
-        "edgecolor": "goldenrod",
-        "linewidth": 2,
-        "alpha": 0.8,
-    },
-)
+node_style = {
+    "facecolor": "white",
+    "edgecolor": "black",
+    "linewidth": 1.2,
+}
 
-pgm.add_node(
-    "Scurvy",
-    "Scurvy\n"+r" $(Y)$",
-    3.25,
-    1,
-    aspect=3,
-    scale=1.1,
-    plot_params={
-        "facecolor": "honeydew",
-        "edgecolor": "seagreen",
-        "linewidth": 2,
-        "alpha": 0.8,
-    },
-)
+# Node positions chosen to reproduce the spacing in the reference
+pgm.add_node("Lemons", "Lemons", 1.0, 1.0, aspect=2.6, scale=1.0, fontsize=10, plot_params=node_style)
+pgm.add_node("Scurvy", "Scurvy", 3.1, 1.0, aspect=2.6, scale=1.0, fontsize=10, plot_params=node_style)
 
-# Add the causal arrow representing the 1747 understanding
-pgm.add_edge("Lemons", "Scurvy")
+pgm.add_edge("Lemons", "Scurvy", plot_params={"linewidth": 1.2, "color": "black"})
 
-# Render the DAG
 fig = pgm.render()
-plt.title("Simplified Lind's Model (1747)", fontsize=10)
-plt.tight_layout()
+plt.title("Simplified Lind's Model (1747)", loc="left", fontsize=12)
+plt.tight_layout(pad=0.2)
 
 ```
 
