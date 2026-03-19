@@ -214,11 +214,39 @@ plt.tight_layout()
 import daft
 import matplotlib.pyplot as plt
 
-pgm = daft.PGM(dpi=150, aspect=3.0, alternate_style="outer")
+# Use DAFT's default "inner" node styling (circles), and keep node aspect at 1.0.
+# Tweaking y-coordinates gives the diagonal layout seen in the reference.
+pgm = daft.PGM(dpi=150, aspect=1.0, alternate_style="inner")
 
-pgm.add_node("vitc", "Vitamin C", 0.7, 0.5, aspect=3.0, scale=1.0)
-pgm.add_node("collagen", "Collagen\nSynthesis", 2.0, 0.5, aspect=3.0, scale=1.0)
-pgm.add_node("scurvy", "Scurvy", 3.3, 0.5, aspect=3.0, scale=1.0)
+pgm.add_node(
+    "vitc",
+    "Vitamin C",
+    0.7,
+    1.1,
+    aspect=1.45,
+    # Bigger circles so the label text fits cleanly (matches the reference).
+    scale=1.35,
+    fontsize=8.5,
+)
+pgm.add_node(
+    "collagen",
+    # Single-line label fits better in the circle style.
+    "Collagen Synthesis",
+    2.0,
+    0.5,
+    aspect=1.6,
+    scale=2.0,
+    fontsize=7.5,
+)
+pgm.add_node(
+    "scurvy",
+    "Scurvy",
+    3.3,
+    0.2,
+    aspect=1.45,
+    scale=1.4,
+    fontsize=8.5,
+)
 
 pgm.add_edge("vitc", "collagen")
 pgm.add_edge("collagen", "scurvy")
@@ -258,25 +286,30 @@ plt.tight_layout()
 Here's an example (see @fig-example-node) that matches the simplified Vitamin C → Collagen Synthesis → Scurvy diagram:
 
 ```{python}
-#| label: fig-example-node
-#| echo: true
-#| fig-cap: "Simplified Modern Understanding (1930s onwards)"
-
 import daft
 import matplotlib.pyplot as plt
 
-pgm = daft.PGM(dpi=150, aspect=3.0, alternate_style="outer")
+# Create a PGM object
+pgm = daft.PGM(dpi=150, alternate_style="outer")
 
-pgm.add_node("vitc", "Vitamin C", 0.7, 0.5, aspect=3.0, scale=1.0)
-pgm.add_node("collagen", "Collagen\nSynthesis", 2.0, 0.5, aspect=3.0, scale=1.0)
-pgm.add_node("scurvy", "Scurvy", 3.3, 0.5, aspect=3.0, scale=1.0)
-
-pgm.add_edge("vitc", "collagen")
-pgm.add_edge("collagen", "scurvy")
+# Example of a professionally styled node
+pgm.add_node("vitamin_c", "Vitamin C\nIntake" + r" $(X)$", 1, 1, aspect = 3, scale = 1.1,
+             plot_params={
+                 'facecolor': 'lightgreen', 
+                 'edgecolor': 'darkgreen', 
+                 'linewidth': 2,
+                 'alpha': 0.8,
+             })
+pgm.add_node("health", "Healthiness\n"+r" $(Y)$", 3.25, 1, aspect = 3, scale = 1.1,
+             plot_params={
+                 'facecolor': 'thistle', 
+                 'edgecolor': 'purple', 
+                 'linewidth': 2,
+                 'alpha': 0.8,
+             })
+pgm.add_edge("vitamin_c", "health")
 
 pgm.render()
-plt.title("Simplified Modern Understanding (1930s onwards)", fontsize=10)
-plt.tight_layout()
 ```
 
 **Key Styling Parameters:**
